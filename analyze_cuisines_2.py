@@ -134,9 +134,7 @@ print df_final
 
 #funtion to create a scoring method for rating and sentiment
 def get_score(avg_r, avg_s):
-	w_r = 1
-	w_s = 1
-	score = (1 * avg_r) + (1 * avg_s)
+	score = (.5 * avg_r) + (.5 * avg_s)
 	return score
 
 scores = []
