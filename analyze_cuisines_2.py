@@ -132,6 +132,31 @@ print "\n Here are the cuisine types that appear in both the top 15 avg sentimen
 
 print df_final
 
+#funtion to create a scoring method for rating and sentiment
+def get_score(avg_r, avg_s):
+	w_r = 1
+	w_s = 1
+	score = (1 * avg_r) + (1 * avg_s)
+	return score
+
+scores = []
+score_list = []
+
+for index, row in df_final.iterrows():
+	a_r = row['Avg Rating']
+	a_s = row['Avg Sentiment']
+	c_score = get_score( a_r, a_s)
+	score_list.append(row["Cuisine"])
+	scores.append(c_score)
+
+scores_dataset = list(zip(score_list, scores))
+
+print "\ntop cuisines by score: "
+df_scores = pd.DataFrame(data = scores_dataset, columns = ['Cuisines' , 'Score'])
+print df_scores.sort('Score', ascending= False)
+
+
+
 
 
 
